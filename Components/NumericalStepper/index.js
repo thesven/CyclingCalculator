@@ -77,7 +77,7 @@ export default class NumericalStepper extends React.Component{
     }
 
     _changeValue(newValue){
-        this.setState({currentValue: newValue});
+        this.setState({currentValue: newValue}, (this.props.onUpdate !== undefined) ? this.props.onUpdate : () => {});
     }
 
     render(){
