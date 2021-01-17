@@ -26,12 +26,10 @@ export default class BaseCalculatorScreen extends React.Component{
     }
 
     updateState(newStateObj){
-        console.log(newStateObj);
         this.setState(newStateObj);
     }
 
     render(){
-        console.log("Data:", this.state.data);
         return(
             <React.Fragment>
                 <View style={mainStyles.screenContainer}>
@@ -46,7 +44,7 @@ export default class BaseCalculatorScreen extends React.Component{
                     </View>
                     <View>
                         <Text>FTP Value:</Text>
-                        <Text>{this.state.currentCalculationValue} W</Text>
+                        <Text>{Math.round(this.state.currentCalculationValue)} W</Text>
                     </View>
                     <View style={mainStyles.stepperContainer}>
                         <NumericalStepper onUpdate={this.onValueUpdate} ref={(r) => this.hundreds = r} startingValue={0} minValue={0} maxValue={9} stepAmount={1} incrementTitle="+" decrementTitle="-" direction="vertical"/>
