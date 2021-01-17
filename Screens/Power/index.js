@@ -13,6 +13,7 @@ export default class PowerScreen extends BaseCalculatorScreen{
 
     componentDidMount(){
         super.componentDidMount();
+        this.onValueUpdate();
     }
 
     onValueUpdate(){

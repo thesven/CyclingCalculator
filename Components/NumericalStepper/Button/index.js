@@ -15,9 +15,11 @@ export default class NumericalStepperButton extends React.Component{
     }
 
     render(){
+        let containerStyle = (this.props.styles !== undefined) ? this.props.styles.container : {};
+        let textStyle = (this.props.styles !== undefined) ? this.props.styles.text : {};
         return(
-            <TouchableOpacity onPress={this.props.onPress}>
-                <Text>{this.props.title}</Text>
+            <TouchableOpacity style={containerStyle} onPress={this.props.onPress}>
+                <Text style={textStyle}>{this.props.title}</Text>
             </TouchableOpacity>
         );
     }

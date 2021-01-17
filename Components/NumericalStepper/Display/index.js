@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 
 export default class NumericalStepperDisplay extends React.Component{
 
@@ -11,10 +11,12 @@ export default class NumericalStepperDisplay extends React.Component{
     }
 
     render(){
+        let containerStyle = (this.props.styles !== undefined) ? this.props.styles.container : {};
+        let textStyle = (this.props.styles !== undefined) ? this.props.styles.text : {};
         return(
-            <React.Fragment>
-                <Text>{this.props.currentValue}</Text>
-            </React.Fragment>
+            <View style={containerStyle}>
+                <Text style={textStyle}>{this.props.currentValue}</Text>
+            </View>
         );
     }
 

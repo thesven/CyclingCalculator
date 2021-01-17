@@ -84,9 +84,9 @@ export default class NumericalStepper extends React.Component{
         return(
             <React.Fragment>
                 <View style={this.directionStyle.container}>
-                    <NumericalStepperButton title={this.props.incrementTitle} onPress={this.incrementValue} />
-                    <NumericalStepperDisplay currentValue={this.state.currentValue} />
-                    <NumericalStepperButton title={this.props.decrementTitle} onPress={this.decrementValue} />
+                    <NumericalStepperButton styles={this.props.buttonStyle} title={this.props.incrementTitle} onPress={this.incrementValue} />
+                    <NumericalStepperDisplay styles={this.props.displayStyle} currentValue={this.state.currentValue} />
+                    <NumericalStepperButton styles={this.props.buttonStyle} title={this.props.decrementTitle} onPress={this.decrementValue} />
                 </View>
             </React.Fragment>
         );

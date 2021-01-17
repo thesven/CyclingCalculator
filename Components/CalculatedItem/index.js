@@ -17,8 +17,8 @@ export default class CalculatedItem extends React.Component{
         return(
             <View style={calculatedItemStyles.container}>
                 <View style={calculatedItemStyles.headers}>
-                    <Text>{this.props.title}</Text>
-                    <Text>{this.props.description}</Text>
+                    <Text style={calculatedItemStyles.headerTitle}>{this.props.title}</Text>
+                    <Text style={calculatedItemStyles.headerDescription}>{this.props.description}</Text>
                 </View>
                 <View style={calculatedItemStyles.values}>
                     <Text>Low: {Math.round(this.props.low)} W</Text>

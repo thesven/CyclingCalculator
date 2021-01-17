@@ -1,7 +1,7 @@
 import React from 'react';
-import {ImageBackground, Text, View, VirtualizedList} from 'react-native';
+import {ImageBackground, ScrollView, Text, View, VirtualizedList} from 'react-native';
 import NumericalStepper from '../NumericalStepper';
-import {mainStyles} from '../../Styles';
+import {mainStyles, stepperStyle} from '../../Styles';
 
 export default class BaseCalculatorScreen extends React.Component{
 
@@ -33,23 +33,21 @@ export default class BaseCalculatorScreen extends React.Component{
         return(
             <React.Fragment>
                 <View style={mainStyles.screenContainer}>
-                    <View>
-                        <ImageBackground source={{uri: this.props.background}} style={mainStyles.header}>
-                            <Text>{this.props.title}</Text>
-                            <Text>{this.props.description}</Text>
-                        </ImageBackground>
+                    <View style={mainStyles.pageHeader}>
+                        <Text style={mainStyles.pageTitle}>{this.props.title}</Text>
+                        <Text style={mainStyles.pageDescription}>{this.props.description}</Text>
                     </View>
-                    <View>
+                    <ScrollView>
                         {this.state.data}
-                    </View>
-                    <View>
-                        <Text>FTP Value:</Text>
-                        <Text>{Math.round(this.state.currentCalculationValue)} W</Text>
+                    </ScrollView>
+                    <View style={mainStyles.ftpContainer}>
+                        <Text style={mainStyles.ftpTitle}>FTP Value:</Text>
+                        <Text style={mainStyles.ftpValue}>{Math.round(this.state.currentCalculationValue)} W</Text>
                     </View>
                     <View style={mainStyles.stepperContainer}>
-                        <NumericalStepper onUpdate={this.onValueUpdate} ref={(r) => this.hundreds = r} startingValue={0} minValue={0} maxValue={9} stepAmount={1} incrementTitle="+" decrementTitle="-" direction="vertical"/>
-                        <NumericalStepper onUpdate={this.onValueUpdate} ref={(r) => this.tens = r} startingValue={0} minValue={0} maxValue={9} stepAmount={1} incrementTitle="+" decrementTitle="-" direction="vertical"/>
-                        <NumericalStepper onUpdate={this.onValueUpdate} ref={(r) => this.ones = r} startingValue={0} minValue={0} maxValue={9} stepAmount={1} incrementTitle="+" decrementTitle="-" direction="vertical"/>
+                        <NumericalStepper displayStyle={{container: stepperStyle.displayContainer, text: stepperStyle.displayText}} buttonStyle={{container: stepperStyle.buttonContainer, text: stepperStyle.buttonText}} onUpdate={this.onValueUpdate} ref={(r) => this.hundreds = r} startingValue={0} minValue={0} maxValue={9} stepAmount={1} incrementTitle="+" decrementTitle="-" direction="vertical"/>
+                        <NumericalStepper displayStyle={{container: stepperStyle.displayContainer, text: stepperStyle.displayText}} buttonStyle={{container: stepperStyle.buttonContainer, text: stepperStyle.buttonText}} onUpdate={this.onValueUpdate} ref={(r) => this.tens = r} startingValue={0} minValue={0} maxValue={9} stepAmount={1} incrementTitle="+" decrementTitle="-" direction="vertical"/>
+                        <NumericalStepper displayStyle={{container: stepperStyle.displayContainer, text: stepperStyle.displayText}} buttonStyle={{container: stepperStyle.buttonContainer, text: stepperStyle.buttonText}} onUpdate={this.onValueUpdate} ref={(r) => this.ones = r} startingValue={0} minValue={0} maxValue={9} stepAmount={1} incrementTitle="+" decrementTitle="-" direction="vertical"/>
                     </View>
                 </View>
             </React.Fragment>
